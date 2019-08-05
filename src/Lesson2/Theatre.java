@@ -1,9 +1,6 @@
 package Lesson2;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by dev on 2/12/2015.
@@ -11,6 +8,24 @@ import java.util.List;
 public class Theatre {
     private final String theatreName;
     private List<Seat> seats = new ArrayList<>();
+
+    static final Comparator<Seat> PRICE_ORDER;
+
+    static {
+        PRICE_ORDER = new Comparator<Seat>() {
+            @Override
+            public int compare(Seat seat1, Seat seat2) {
+//                if (seat1.getPrice() < seat2.getPrice()) {
+//                    return -1;
+//                } else if (seat1.getPrice() > seat2.getPrice()) {
+//                    return 1;
+//                } else {
+//                    return 0;
+//                }
+                return seat1.compareTo(seat2);
+            }
+        };
+    }
 
     public Theatre(String theatreName, int numRows, int seatsPerRow) {
         this.theatreName = theatreName;
